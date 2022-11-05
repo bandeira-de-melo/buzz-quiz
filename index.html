@@ -27,18 +27,18 @@
                 </div>
             </div>
         </section>
+
+        <!-- criando um quizz -->
         <section class="comecePeloComeco">
             <div class="corpo1">
                 <p class="p1">Comece pelo começo</p>
                 <div class="containerDeInputs">
-                    <input class="styleDasInput" placeholder="Título do Quizz" type="text">
-                    <input class="styleDasInput" placeholder="Título do Quizz" type="text">
-
-                    <!-- <input class="styleDasInput" placeholder="URL da imagem do seu Quizz" type="url">
-                    <input class="styleDasInput" placeholder="Quantidade de Perguntas do Quizz" type="number">
-                    <input class="styleDasInput" placeholder="Quantidade de níveis do Quizz" type="number"> -->
+                    <input id="titulo" class="styleDasInput" placeholder="Título do Quizz" type="text">
+                    <input id="url" class="styleDasInput" placeholder="URL da imagem do seu Quizz" type="url">
+                    <input id="perguntas" class="styleDasInput" placeholder="Quantidade de Perguntas do Quizz" type="number">
+                    <input id="niveis" class="styleDasInput" placeholder="Quantidade de níveis do Quizz" type="number">
                 </div>
-                <button class="botaoProsseguirParaCriarPerguntas"></button>
+                <button class="botaoProsseguirParaCriarPerguntas" onclick="recebendoConfigDoQuizz()">Prosseguir para criar Perguntas</button>
             </div>
         </section>
 

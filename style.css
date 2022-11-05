@@ -132,8 +132,8 @@ header {
 }
 .containerDeInputs{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 600px;
     height: 256px;
     left: 420px;
@@ -143,31 +143,38 @@ header {
 }
 .botaoProsseguirParaCriarPerguntas{
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    width: 324px;
+    flex-direction: column; 
+    width: 368.86px;
     height: 54px;
-    left: 24px;
-    top: 443px;
-    background: #EC362D;
+    background-color: #EC362D;
     border-radius: 15px;
+    border-style: none;
+    margin-top: 85px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    display: flex;
+    color: #FFF5F4;
+}
+input{
+    padding-left: 20px;
 }
 input::placeholder {
-    padding-left: 10px;
     color: #bdbdbd;
-  }
+    margin: 10px;
+}
 .styleDasInput{
-    position: absolute;
-    width: 341px;
+    width: 564px;
     height: 46px;
-    left: 30px;
-    top: 192px;
-    font-family: 'Roboto';
-    font-style: italic;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 22px;
+    left: 436px;
+    top: 215px;
+    margin: 8px;
+    background: #FFFFFF;
     border: 1px solid #D1D1D1;
-    border-radius: 5px    
+    border-radius: 5px;  
 }
