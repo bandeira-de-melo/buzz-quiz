@@ -32,17 +32,16 @@ getQuizzes();
 
 function criarPerguntas(){
     
-    // Tela anterior .classList.add("escondido");
+    document.querySelector(".comecePeloComeco").classList.add("escondido");
     criarQuizzPerguntas.classList.remove("escondido");
 
-    let i=0;
     const numPerguntas = 3; // Número de perguntas selecionadas
     let perguntaInfo =`<h3>Crie suas perguntas</h3>`;
 
     for (let i = 0; i < numPerguntas; i++) {
         perguntaInfo += `
             <div class="criar-pergunta">
-                <button type="button" class="button-editar" onclick="colapsar(this)">
+                <button class="button-editar" type="button" onclick="colapsar(this)">
                     <h4>Pergunta ${[i]}</h4>
                     <ion-icon class="icon-editar" name="create-outline"></ion-icon>
                 </button>    
@@ -67,7 +66,7 @@ function criarPerguntas(){
     }
 
     criarQuizzPerguntas.innerHTML += perguntaInfo;
-    criarQuizzPerguntas.innerHTML += `<button onclick="criarNiveis()">Prosseguir para criar níveis</button>`;
+    criarQuizzPerguntas.innerHTML += `<button class="button-proxima-tela" onclick="criarNiveis()">Prosseguir para criar níveis</button>`;
 
     const colapsarPerguntas = document.querySelectorAll(".criar-pergunta-container");
     colapsarPerguntas[0].classList.remove("escondido");
@@ -84,6 +83,8 @@ function colapsar(element){ // Para minimizar seção na tela de criação das p
 
 // Tela 3 - Níveis
 
-function criarNiveis() {}
+function criarNiveis() {
+    document.querySelector(".criarQuizz-perguntas").classList.add("escondido");
+}
 
 // Tela 4 - Sucesso
