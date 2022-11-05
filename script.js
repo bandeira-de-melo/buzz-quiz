@@ -1,4 +1,4 @@
-const containerQuizzesOutros = document.querySelector(".criarQuiz");
+const containerQuizzesOutros = document.querySelector(".todos-os-quizzes-container");
 const criarQuizzPerguntas = document.querySelector(".criarQuiz-perguntas");
 const criarQuizzNiveis = document.querySelector(".criarQuiz-niveis");
 const criarQuizzSucesso = document.querySelector(".criarQuiz-sucesso");
@@ -9,8 +9,8 @@ let listaQuizzesOutros ="";
 function getQuizzes(){
     axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
     .then(response => {listaQuizzesOutros = response.data})
-    .then(quizzesOutros => {
-        listaQuizzesOutros.forEach((quizzesOutros) =>{
+    .then(() => {
+        listaQuizzesOutros.forEach(quizzesOutros =>{
             containerQuizzesOutros.innerHTML += 
             `
             <div class="quizzOutros">
