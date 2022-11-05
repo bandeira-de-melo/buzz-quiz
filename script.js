@@ -1,5 +1,5 @@
 const containerQuizzesOutros = document.querySelector(".criarQuiz");
-const criarQuizzPerguntas = document.querySelector(".criarQuiz-perguntas");
+const criarQuizzPerguntas = document.querySelector(".criarQuizz-perguntas");
 const criarQuizzNiveis = document.querySelector(".criarQuiz-niveis");
 const criarQuizzSucesso = document.querySelector(".criarQuiz-sucesso");
 
@@ -32,8 +32,8 @@ getQuizzes();
 
 function criarPerguntas(){
     
-    document.querySelector(".comecePeloComeco").classList.add("escondido");
-    criarQuizzPerguntas.classList.remove("escondido");
+    //document.querySelector(".comecePeloComeco").classList.add("escondido");
+    //criarQuizzPerguntas.classList.remove("escondido");
 
     const numPerguntas = 3; // Número de perguntas selecionadas
     let perguntaInfo =`<h3>Crie suas perguntas</h3>`;
@@ -42,7 +42,7 @@ function criarPerguntas(){
         perguntaInfo += `
             <div class="criar-pergunta">
                 <button class="button-editar" type="button" onclick="colapsar(this)">
-                    <h4>Pergunta ${[i]}</h4>
+                    <h4>Pergunta ${i + 1}</h4>
                     <ion-icon class="icon-editar" name="create-outline"></ion-icon>
                 </button>    
    
@@ -80,6 +80,17 @@ function colapsar(element){ // Para minimizar seção na tela de criação das p
     }
     element.nextElementSibling.classList.remove("escondido")
 }
+criarPerguntas()
+/*
+function guardarPerguntas() {
+    let perguntas = [];
+    let pergunta = {};
+    document.querySelectorAll(".criar-pergunta");
+
+    for (let i = 0; i < numPerguntas; i++) {
+        document
+    }
+}
 
 // Tela 3 - Níveis
 
@@ -88,3 +99,4 @@ function criarNiveis() {
 }
 
 // Tela 4 - Sucesso
+*/

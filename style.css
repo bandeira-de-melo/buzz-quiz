@@ -206,7 +206,7 @@ input::placeholder {
 }
 .criar-pergunta-container input{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     width: 564px;
     height: 46px;
     font-style: italic;
