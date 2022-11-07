@@ -5,14 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuzzQuiz</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/criarQuizzStyle.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <div class="container-geral">
         <header>BuzzQuizz</header>
 
-        <section class="tela-lista-de-quizzes">
+        <section class="tela-lista-de-quizzes ">
             <div class="tela-lista-de-quizzes__container">
                 <div class="seus-quizzes-container">
                     <div class="seus-quizzes-vazio">
@@ -41,8 +45,7 @@
 
         <!-- criando um quizz -->
         <section class="comecePeloComeco escondido">
-            <div class="corpo1">
-                <p class="p1">Comece pelo começo</p>
+                <h3>Comece pelo começo</h3>
                 <div class="containerDeInputs">
                     <input id="titulo" class="styleDasInput" placeholder="Título do Quizz" type="text">
                     <input id="url" class="styleDasInput" placeholder="URL da imagem do seu Quizz" type="url">
@@ -50,16 +53,28 @@
                     <input id="niveis" class="styleDasInput" placeholder="Quantidade de níveis do Quizz" type="number">
                 </div>
                 <button class="botaoProsseguirParaCriarPerguntas" onclick="recebendoConfigDoQuizz()">Prosseguir para criar Perguntas</button>
-            </div>
         </section>
+        <section class="agoraDecidaOsNiveis ">
+                <h3>Agora, decida os níveis</h3>
+                <div class="caixaDosTitulos-Nivel">  <h4>Nível 1</h4>  </div>
+                <div class="containerDeInputsNiveis">
+                    <input id="tituloDoNivel" class="styleDasInput" placeholder="Título do Nível" type="text">
+                    <input id="porcentDeAcerto" class="styleDasInput" placeholder="% de acerto mínima" type="number">
+                    <input id="url-IMG-Nivel" class="styleDasInput" placeholder="URL da imagem do nível" type="url">
+                    <input id="descricaoDoNivel" class="styleDasInput" placeholder="Descrição do Nível" type="text">
+                </div>
+                <div class="caixaDosTitulos-Nivel">  <h4>Nível 2</h4>  </div>
+                <div class="caixaDosTitulos-Nivel">  <h4>Nível 3</h4>  </div>
 
-        <section class="criarQuizz-perguntas escondido"></section>
+                <button class="botaoProsseguirParaCriarPerguntas" onclick="recebendoConfigDoQuizz()">Prosseguir para criar Perguntas</button>
+        </section>
 
         <section class="criarQuizz-niveis escondido"></section>
 
         <section class="criarQuizz-sucesso escondido"></section>
 
     </div>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
 </body>
