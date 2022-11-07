@@ -4,7 +4,9 @@ const containerQuizzesOutros = document.querySelector(".criarQuiz");
 const criarQuizzPerguntas = document.querySelector(".criarQuizz-perguntas");
 const criarQuizzNiveis = document.querySelector(".agoraDecidaOsNiveis");
 const criarQuizzSucesso = document.querySelector(".criarQuizz-sucesso");
+const quizzesOustrosContainer = document.querySelector(".todos-os-quizzes-container")
 
+let telaListaQuizzes = document.querySelector(".tela-lista-de-quizzes");
 let listaQuizzesOutros ="";
 let quizzSelecionado = ""
 let quizzPerguntas = ""
@@ -51,6 +53,36 @@ function getQuizz(elId){
 }
 
 // Tela criar Quizz
+function toggleEscondido(objetoQuizz){
+    console.log("oi")
+    telaListaQuizzes.classList.add("escondido")
+    telaExibicaoQuizz.classList.remove("escondido")
+    perguntaContainer.classList.remove("escondido")
+    telaExibicaoQuizz.innerHTML = `
+    <div class="titulo-quizz__container">
+    <p class="titulo-quizz">${objetoQuizz.title}</p>
+    </div>
+    `
+    //inserirPerguntas(objetoQuizz)
+    for(let i = 0; i < objetoQuizz.questions.length; i++){
+        perguntaContainer.innerHTML +=`
+        <div class="quizz-pergunta-box">
+            <p class="pergunta">${objetoQuizz.questions[i].title}</p>
+        </div>
+        `
+        for(let r = 0; r < objetoQuizz.questions[i].answers.length; r++) {
+            respostasContainer.innerHTML += `
+            <div class="quizz-respostas-box">
+                <div class="resposta-box">
+                    <img src="${quizzPerguntas[r].image}" alt="" class="imagem-resposta">
+                    <p class="titulo-resposta">${quizzPerguntas[r].text}</p>
+                </div>
+            </div>
+            `
+        }
+    }
+
+}
 
 // Tela 1 -  'Comece pelo começo';
 
