@@ -22,9 +22,6 @@ function getQuizzes(){
             `
         })
     })
-    .catch(error => {
-        console.log(error);
-    })
     
 }
 
@@ -62,13 +59,13 @@ function recebendoConfigDoQuizz() {
         alert("Você precisa inserir um Link de imagem válido :( ");
       }
     if(perguntas < 1){
-        alert("É preciso inserir pelo menos 1 pergunta ;)");
+        alert("É preciso inserir pelo menos 3 pergunta ;)");
       }
     if(perguntas > 20){
         alert("O limite de perguntas é 20 :/");
       }
     if(niveis > 3){
-        alert("A quantidade de níveis deve ser entre 1 e 3 :)");
+        alert("A quantidade de níveis deve ser entre 2 e 3 :)");
       }
       console.log(url.value);
 
@@ -262,6 +259,14 @@ function criarNiveis() {
     document.querySelector(".criarQuizz-perguntas").classList.add("escondido");
 }
 */
+//
+//
+//
+//
+//
+//
+//
+
 
 // Tela 4 - Sucesso
 
