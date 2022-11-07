@@ -1,4 +1,4 @@
-window.onload = getQuizzes()
+//window.onload = getQuizzes()
 
 const containerQuizzesOutros = document.querySelector(".criarQuiz");
 const criarQuizzPerguntas = document.querySelector(".criarQuizz-perguntas");
@@ -79,21 +79,24 @@ function recebendoConfigDoQuizz() {
 
 function criarPerguntas(){
     
-    document.querySelector(".comecePeloComeco").classList.add("escondido");
-    criarQuizzPerguntas.classList.remove("escondido");
+    if (!document.querySelector(".comecePeloComeco").classList.contains("escondido"))
+        document.querySelector(".comecePeloComeco").classList.add("escondido");
+    
+    if (criarQuizzPerguntas.classList.contains("escondido"))
+        criarQuizzPerguntas.classList.remove("escondido");
 
-    const numPerguntas = perguntasInput.value;
+    const numPerguntas = 3 //document.querySelector("#perguntas").value;
     let perguntasHTML =`<h3>Crie suas perguntas</h3>`;
 
     for (let i = 0; i < numPerguntas; i++) {
         perguntasHTML += `
-            <div class="criar-pergunta">
+            <div id="criarPergunta${i + 1}" class="criar-pergunta">
                 <button class="button-editar" type="button" onclick="colapsar(this)">
                     <h4>Pergunta ${i + 1}</h4>
-                    <ion-icon class="icon-editar" name="create-outline"></ion-icon>
+                    <ion-icon id="iconEditar${i + 1}" class="icon-editar" name="create-outline"></ion-icon>
                 </button>    
    
-                <div class="criar-pergunta-container escondido">
+                <div id="criarPerguntaContainer${i + 1}" class="criar-pergunta-container escondido">
                     <input id="input${i + 1}TxtPergunta" type="text" placeholder="Texto da pergunta" minlength="20">
                     <input id="input${i + 1}CorPergunta" type="text" placeholder="Cor de fundo da pergunta" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?">
 
@@ -109,32 +112,30 @@ function criarPerguntas(){
                     <input id="input${i + 1}TxtRespIncorreta3" type="text" placeholder="Resposta incorreta 3">
                     <input id="input${i + 1}URLRespIncorreta3" type="url" placeholder="URL da imagem 3" class="inputs-URL-incorreta">
                 </div>
-            </div>`
+            </div>`;
     }
 
     criarQuizzPerguntas.innerHTML += perguntasHTML;
     criarQuizzPerguntas.innerHTML += `<button class="button-proxima-tela" onclick="guardarPerguntas()">Prosseguir para criar níveis</button>`;
 
-    const colapsarPerguntas = document.querySelectorAll(".criar-pergunta-container");
-    colapsarPerguntas[0].classList.remove("escondido");
-    document.querySelectorAll(".icon-editar")[0].classList.add("escondido");
+    criarQuizzPerguntas.querySelector("#criarPerguntaContainer1").classList.remove("escondido");
+    criarQuizzPerguntas.querySelector("#iconEditar1").classList.add("escondido");
 }
 
 const iconsEditar = document.querySelectorAll(".icon-editar");
 const inputsContainer = document.querySelectorAll(".criar-pergunta-container");
 
-function colapsar(element){ // Para minimizar seção na tela de criação das perguntas
+function colapsar(element){ // Para recolher seção na tela de criação das perguntas
 
     for (let i = 0; i < perguntasInput.value; i++) {
-        if (!inputsContainer[i].classList.contains("escondido"))
+        if (!inputsContainer[i].classList.contains("escondido")) {
             inputsContainer[i].classList.add("escondido");
             iconsEditar[i].classList.remove("escondido");
+        }
     }
     element.nextElementSibling.classList.remove("escondido");
     element.querySelector(".icon-editar").classList.add("escondido");
 }
-
-//<button class="botaoProsseguirParaCriarPerguntas" onclick="recebendoConfigDoQuizz()">
 
 let arrayPerguntas = [];
 
@@ -260,6 +261,26 @@ function guardarPerguntas() {
 function criarNiveis() {
     document.querySelector(".criarQuizz-perguntas").classList.add("escondido");
 }
+*/
 
 // Tela 4 - Sucesso
-*/
+
+function criarQuizzResultado() {
+    if (criarQuizzSucesso.classList.contains("escondido"))
+        criarQuizzSucesso.classList.remove("escondido");
+    
+    // Provisório
+    document.querySelector("#titulo").value = "O quão Potterhead é você?";
+    document.querySelector("#url").value = "https://img1.looper.com/img/gallery/harry-potter-character-endings-ranked-from-worst-to-best/l-intro-1605742258.jpg";
+
+     const sucessoHTML = `
+        <h3>Seu quizz está pronto!</h3>
+        <div>
+            <img src"${document.querySelector("#url").value}">
+            <p>${document.querySelector("#titulo").value}</p>
+        </div>
+        <button class="button-acessar-quiz" onclick="abrirQuizz()">Acessar Quizz</button>
+        <button class="button-acessar-home" onclick="window.location.reload()">Voltar para home</button>`
+    
+        criarQuizzSucesso.innerHTML = sucessoHTML;
+}
