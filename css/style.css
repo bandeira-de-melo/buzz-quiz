@@ -177,63 +177,7 @@ input::placeholder {
     border-radius: 5px;  
 }
 
-/*Classes tela criação de perguntas*/
 
-.criarQuizz-perguntas {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    font-size: 23px;
-    font-weight: 700;
-    line-height: 27px;
-    padding: 0 17px 17px 17px;
-    box-sizing: border-box;
-}
-.criar-pergunta {
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-}
-.criar-pergunta h3 {
-    margin: 63px 0 36px 0;
-}
-.criar-pergunta h4 {
-    margin: 14px 0 24px 0;
-}
-.icon-editar {
-    color: #000000;
-    font-size: 26px;
-}
-.criar-pergunta-container input{
-    display: flex;
-    flex-direction: column;
-    width: 564px;
-    height: 46px;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 22px;
-    color: #D1D1D1;
-    border: 1px solid #D1D1D1;
-    border-radius: 5px;
-    margin: 7px 0 7px 0; 
-}
-
-.button-proxima-tela {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 54px;
-    width: 370px;
-    background-color: #EC362D;
-    color: white;
-    border-radius: 15px;
-    border: none;
-}
 
 .escondido {
     display: none;
