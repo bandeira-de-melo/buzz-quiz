@@ -30,15 +30,20 @@ header {
 .tela-lista-de-quizzes {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tela-lista-de-quizzes__container {
     width: 1051px;
+
 }
 
 .seus-quizzes-container{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .seus-quizzes-vazio{
@@ -234,6 +239,26 @@ input::placeholder {
     border-radius: 15px;
     border: none;
 }
+
+/*CSS Tela-de-exibicao-quizz*/
+
+.tela-de-exibicao-quizz{
+    width: 100%;
+    height: auto;
+    
+}
+.tela-de-exibicao-quizz__header{
+    width: 100%;
+    height: 227px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.quizz-pergunta-resposta-box {
+    width: 350px;
+    background-color: rgb(95, 234, 40);
+}
+/*Fim CSS Tela-de-exibicao-quizz*/
 
 .escondido {
     display: none;
