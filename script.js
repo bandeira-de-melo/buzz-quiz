@@ -4,7 +4,9 @@ const containerQuizzesOutros = document.querySelector(".criarQuiz");
 const criarQuizzPerguntas = document.querySelector(".criarQuizz-perguntas");
 const criarQuizzNiveis = document.querySelector(".criarQuizz-niveis");
 const criarQuizzSucesso = document.querySelector(".criarQuizz-sucesso");
+const quizzesOustrosContainer = document.querySelector(".todos-os-quizzes-container")
 
+let telaListaQuizzes = document.querySelector(".tela-lista-de-quizzes");
 let listaQuizzesOutros ="";
 let quizzSelecionado = ""
 let quizzPerguntas = ""
@@ -49,6 +51,26 @@ function getQuizz(elId){
 }
 
 // Tela abrirQuizz
+function toggleEscondido(objetoQuizz){
+    console.log("oi")
+    telaListaQuizzes.classList.add("escondido")
+    telaExibicaoQuizz.classList.remove("escondido")
+    perguntaContainer.classList.remove("escondido")
+    telaExibicaoQuizz.innerHTML = `
+    <div class="titulo-quizz__container">
+    <p class="titulo-quizz">${objetoQuizz.title}</p>
+    </div>
+    `
+    //inserirPerguntas(objetoQuizz)
+    for(let i = 0; i < objetoQuizz.questions.length; i++){
+        perguntaContainer.innerHTML +=`
+        <div class="quizz-pergunta-box">
+            <p class="pergunta">${objetoQuizz.questions[i].title}</p>
+        </div>
+        `
+    }
+
+}
 
 
 // Tela 'Comece pelo começo';
