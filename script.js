@@ -6,28 +6,52 @@ const criarQuizzNiveis = document.querySelector(".agoraDecidaOsNiveis");
 const criarQuizzSucesso = document.querySelector(".criarQuizz-sucesso");
 
 let listaQuizzesOutros ="";
+let quizzSelecionado = ""
+let quizzPerguntas = ""
+let objetoQuizz = ""
 
 
 function getQuizzes(){
     axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
     .then(response => {listaQuizzesOutros = response.data})
     .then(() => {
-        listaQuizzesOutros.forEach(quizzesOutros =>{
-            containerQuizzesOutros.innerHTML += 
+        listaQuizzesOutros.forEach(quizzOutros =>{ 
+            
+            quizzesOustrosContainer.innerHTML += 
             `
-            <div class="quizzOutros">
-                <img src="${quizzesOutros.image}" alt="" class="quizzOutros__imagem">
-                <h3 class="quizzOutros__titulo">${quizzesOutros.title}</h3>
+            <div class="quizzOutros" onclick="getQuizz(${quizzOutros.id});">
+                <img src="${quizzOutros.image}" alt="" class="quizzOutros__imagem">
+                <h3 class="quizzOutros__titulo">${quizzOutros.title}</h3>
             </div>
             `
+            
         })
+    })
+    .catch(error => {
+        
     })
     
 }
 
 getQuizzes()
 
+
+
+function getQuizz(elId){
+    
 // ----- CRIAÇÃO DO QUIZZ -----
+
+    axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${elId}`)
+    .then(function(res){
+    objetoQuizz = res.data
+    quizzPerguntas = res.data.questions
+    toggleEscondido(objetoQuizz)
+
+})
+}
+
+// Tela abrirQuizz
+
 
 // Tela 1 -  'Comece pelo começo';
 
@@ -55,14 +79,17 @@ function recebendoConfigDoQuizz() {
         return
     } else if (!re.test(url) || url === "") {
         alert("Você precisa inserir um Link de imagem válido :( ");
-        return
-    } else if (perguntas < 3) {
-        alert("É preciso inserir pelo menos 3 perguntas ;)");
-        return
-    } else if(niveis < 2){
-        alert("É preciso inserir pelo menos 2 níveis :)");
-        return
-    }
+      }
+    if(perguntas < 1){
+        alert("É preciso inserir pelo menos 3 pergunta ;)");
+      }
+    if(perguntas > 20){
+        alert("O limite de perguntas é 20 :/");
+      }
+    if(niveis > 3){
+        alert("A quantidade de níveis deve ser entre 2 e 3 :)");
+      }
+      console.log(url.value);
 
     criarPerguntas()
 }
@@ -79,7 +106,7 @@ function criarPerguntas(){
 
     const numPerguntas = document.querySelector("#perguntas").value;
     let perguntasHTML =`<h3>Crie suas perguntas</h3>`;
-
+    
     for (let i = 0; i < numPerguntas; i++) {
         perguntasHTML += `
             <div id="criarPergunta${i + 1}" class="criar-pergunta">
@@ -255,7 +282,6 @@ function guardarPerguntas() {
     criarNiveis()
 }
 
-
 // Tela 3 - Níveis
 
 const numNiveis = document.querySelector("#niveis").value;
@@ -353,6 +379,7 @@ function gerarObjetoQuizz() {
     
     criarQuizzResultado()
 }
+
 
 // Tela 4 - Sucesso
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
     <div class="container-geral">
         <header>BuzzQuizz</header>
 
-        <section class="tela-lista-de-quizzes escondido">
+        <section class="tela-lista-de-quizzes ">
             <div class="tela-lista-de-quizzes__container">
                 <div class="seus-quizzes-container">
                     <div class="seus-quizzes-vazio">
@@ -25,14 +25,26 @@
                         </p>
                         <div class="btn btn-cria-quizz" onclick="">Criar Quizz</div>                      
                     </div>
-                    <div class="todos-os-quizzes-container">
-                        
-                    </div>
+                </div>
+                <div class="todos-os-quizzes-container">
+                    
                 </div>
             </div>
         </section>
 
-        <section class="comecePeloComeco">
+        <section class="tela-de-exibicao-quizz escondido">
+           
+            <div class="quizz-pergunta-box-container">
+                  
+            </div>
+               
+            <div class="quizz-respostas-box-container">
+                
+            </div>
+        </section>
+
+        <!-- criando um quizz -->
+        <section class="comecePeloComeco escondido">
                 <h3>Comece pelo começo</h3>
                 <div class="containerDeInputs">
                     <input id="titulo" class="styleDasInput" placeholder="Título do Quizz" type="text">
