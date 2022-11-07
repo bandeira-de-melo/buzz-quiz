@@ -222,7 +222,7 @@ input::placeholder {
 
 /*Versão mobile - Comece pelo comce*/
 
-@media all and (max-width: 935px) {
+/* @media all and (max-width: 935px) {
     .containerDeInputs {
       width: 10%;
       justify-content: center;
@@ -231,4 +231,4 @@ input::placeholder {
     .styleDasInput {
         width: 100%;
     }
-}
+} */

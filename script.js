@@ -39,7 +39,7 @@ getQuizzes()
 
 function getQuizz(elId){
     
-// ----- CRIAÇÃO DO QUIZZ -----
+// ----- ABRIR QUIZZ -----
 
     axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${elId}`)
     .then(function(res){
@@ -50,10 +50,21 @@ function getQuizz(elId){
 })
 }
 
-// Tela abrirQuizz
-
+// Tela criar Quizz
 
 // Tela 1 -  'Comece pelo começo';
+
+function iniciarCriacaoQuizz(){
+    const nodeListaPaginas = document.querySelectorAll("section")
+    const listaPaginas = Array.from(nodeListaPaginas)
+    listaPaginas.forEach(function(pagina){
+        if(pagina.classList.contains("escondido")){
+            pagina.classList.remove("escondido")
+        } else {
+            pagina.classList.add("escondido")
+        }
+    })
+}
 
 const listaDeQuizz = [];
 const tituloInput = document.getElementById("titulo");
@@ -137,16 +148,17 @@ function criarPerguntas(){
     criarQuizzPerguntas.innerHTML += perguntasHTML;
     criarQuizzPerguntas.innerHTML += `<button class="button-proxima-tela" onclick="guardarPerguntas()">Prosseguir para criar níveis</button>`;
 
-    criarQuizzPerguntas.querySelector("#criarPerguntaContainer1").classList.remove("escondido");
-    criarQuizzPerguntas.querySelector("#iconEditar1").classList.add("escondido");
+    document.querySelector("#criarPerguntaContainer1").classList.remove("escondido");
+    document.querySelector("#iconEditar1").classList.add("escondido");
 }
 
 function colapsar(element){ // Para recolher seção na tela de criação das perguntas
     
-    const inputsContainer = element.querySelectorAll(".criar-pergunta-container");
+    const inputsContainer = element.parentNode.querySelectorAll(".criar-pergunta-container");
     const iconsEditar = element.querySelectorAll(".icon-editar");
 
     let cont = 0;
+
     if (element.classList.contains(".ePergunta")) {
         cont = document.querySelector("#perguntas").value;
     } else if (element.classList.contains(".eNivel")) {
@@ -350,7 +362,7 @@ function guardarNiveis() {
             return
         }
 
-        arrayNiveis[i].push(
+        arrayNiveis.push(
             {
                 title: inputTituloNivel[i],
                 image: inputURLNivel[i],
@@ -374,12 +386,14 @@ function gerarObjetoQuizz() {
     }
 
     axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzCriado)
-        .then(response => console.log(response.status))
+        .then(response => {
+            let idQuizz = response.data;
+            console.log(response.data);
+            localStorage.setItem("id", idQuizz);
+            criarQuizzResultado()
+        })
         .catch(err => console.log(err));
-    
-    criarQuizzResultado()
 }
-
 
 // Tela 4 - Sucesso
 
@@ -390,14 +404,10 @@ function criarQuizzResultado() {
     if (criarQuizzSucesso.classList.contains("escondido"))
         criarQuizzSucesso.classList.remove("escondido");
     
-    // ----------- Teste -----------
-    //document.querySelector("#titulo").value = "O quão Potterhead é você?";
-    //document.querySelector("#url").value = "https://img1.looper.com/img/gallery/harry-potter-character-endings-ranked-from-worst-to-best/l-intro-1605742258.jpg";
-
      const sucessoHTML = `
         <h3>Seu quizz está pronto!</h3>
         <div>
-            <img src"${document.querySelector("#url").value}">
+            <img src"${document.querySelector("#url").value}" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url(${document.getElementById("url")})">
             <p>${document.querySelector("#titulo").value}</p>
         </div>
         <button class="button-acessar-quiz" onclick="abrirQuizz()">Acessar Quizz</button>
@@ -405,3 +415,4 @@ function criarQuizzResultado() {
     
     criarQuizzSucesso.innerHTML = sucessoHTML;
 }
+

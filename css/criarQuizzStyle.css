@@ -1,4 +1,4 @@
-/*Tela criação de Quiz - Perguntas*/
+/*Tela criação de Quiz 2 - Perguntas*/
 
 .criarQuizz-perguntas {
     display: flex;
@@ -21,15 +21,14 @@
     padding: 0 18px 0 18px;
     margin: 12px 0 12px;
 }
-.criarQuizz-perguntas > h3 {
-    margin: 63px 0 24px 0;
+.button-editar h4 {
+    margin: 24px 0 24px 0;
 }
 .criar-pergunta-container > h4 {
     margin: 28px 0 14px 0;
 }
 .button-editar {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -81,7 +80,7 @@
     margin: 50px;
 }
 
-/*Tela criação de Quiz - Sucesso*/
+/*Tela criação de Quiz 4 - Sucesso*/
 
 .criarQuizz-sucesso {
     display: flex;
@@ -100,7 +99,7 @@
     width: 500px;
     height: 266px;
     box-sizing: border-box;
-    margin: 45px;
+    margin: 114px 0 45px 0;
 }
 .criarQuizz-sucesso > div > p {
     position: absolute;
@@ -118,7 +117,6 @@
     width: 100%;
     height: 266px;
     border-radius: 5px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%); 
 }
 .button-acessar-quiz {
     width: 221px;
